@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Analysis Report</title>
+</head>
+<body>
+    <h1>Text Analysis Report</h1>
+    <table border="1">
+        <tr>
+            <th>File Name</th>
+            <th>Keyword Count</th>
+            <th>Most Frequent Words</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.file_name }}</td>
+            <td>
+                <ul>
+                    {% for keyword, count in result.keyword_count.items() %}
+                    <li>{{ keyword }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for word, frequency in result.most_frequent_words %}
+                    <li>{{ word }}: {{ frequency }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
